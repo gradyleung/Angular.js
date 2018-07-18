@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .red{
+        color:red;
+    }
+    .green{
+        color: green;
+    }
+</style>
+</head>
+<body ng-app="myApp">
+    <ul ng-controller="Listcontroller">
+        <li ng-repeat="item in black" ng-class="{red:$even,green:$odd}"data-id="{{item.id}}">
+        <span> {{$first?'first':''}}</span>
+        <strong>{{item.name}}</strong>
+        &nbsp;
+        <span>{{item.age}}</span>
+        </li>
+    </ul>
+    
+    <script src="bower_components/angular/angular.js"></script>
+    <script>
+    angular.module('myApp',[]).controller('Listcontroller',['$scope',function($scope){
+
+        $scope.black = [];
+        for (var i = 1; i<10;i++){
+            $scope.black[$scope.black.length]={
+                id:i,
+                name:"小" + i,
+                age: 20 + i
+            };
+        }
+    }]);
+    </script>
+</body>
+</html>
